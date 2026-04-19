@@ -76,7 +76,8 @@ void ScalarConverter::convert(std::string input) {
 		if ((pos != input.length() && pos != input.length() - 1)
 			|| (pos == input.length() - 1
 			&& input[pos] != 'f'
-			&& input[pos] != 'F')) {
+			&& input[pos] != 'F'))
+		{
 				return (std::cout << "This is not a valid input" << std::endl, void());
 		}
 	}
@@ -85,6 +86,7 @@ void ScalarConverter::convert(std::string input) {
 		return (std::cout << "This is not a valid input" << std::endl, void());
 	}
 
+	std::cout << "Input: " << input << std::endl;
 	if (input.compare("nan") == 0 || input.compare("nanf") == 0
 		|| input.compare("inf") == 0 || input.compare("inff") == 0
 		|| input.compare("+inf") == 0 || input.compare("+inff") == 0
@@ -96,7 +98,6 @@ void ScalarConverter::convert(std::string input) {
 			return;
 	}
 
-	std::cout << "Input: " << input << std::endl;
 	std::cout << "char: " << isPrintableChar(input) << std::endl;
 	std::cout << "int: " << isInt(input) << std::endl;
 	std::cout << "float: " << isFloat(input)<< std::endl;
