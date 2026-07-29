@@ -5,8 +5,9 @@ ScalarConverter::ScalarConverter()
 	return ;
 }
 
-ScalarConverter::ScalarConverter(const ScalarConverter &bscalar)
+ScalarConverter::ScalarConverter(const ScalarConverter &scalar)
 {
+	*this = scalar;
 	return ;
 }
 

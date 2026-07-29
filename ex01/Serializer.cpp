@@ -5,7 +5,7 @@ Serializer::Serializer()
 	return ;
 }
 
-Serializer::Serializer(const Serializer &bscalar)
+Serializer::Serializer(const Serializer &serialier)
 {
 	return ;
 }
@@ -15,7 +15,7 @@ Serializer::~Serializer()
 	return ;
 }
 
-Serializer&	Serializer::operator=(const Serializer& scalar)
+Serializer&	Serializer::operator=(const Serializer& serializer)
 {
 	return (*this);
 }
