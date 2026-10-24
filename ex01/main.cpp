@@ -4,7 +4,6 @@ int main(void)
 {
 	Data	data;
 
-
 	data.data = 42;
 	Data	*data2 = Serializer::deserialize(Serializer::serialize(&data));
 	if (data2 == &data)

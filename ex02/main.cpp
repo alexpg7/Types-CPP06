@@ -40,7 +40,7 @@ void identify(Base& p) {
 				(void)dynamic_cast<C&>(p);
 				std::cout << "C" << std::endl;
 			} catch (std::bad_cast&) {
-				// Handle error here
+				std::cerr << "Something went wrong" << std::endl;
 			}
 		}
 	}
@@ -54,16 +54,20 @@ int main(void)
 	example = generate();
 	identify(example);
 	identify(*example);
+	delete example;
 
 	example = generate();
 	identify(example);
 	identify(*example);
+	delete example;
 
 	example = generate();
 	identify(example);
 	identify(*example);
+	delete example;
 
 	example = generate();
 	identify(example);
 	identify(*example);
+	delete example;
 }

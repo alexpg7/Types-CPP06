@@ -5,8 +5,9 @@ ScalarConverter::ScalarConverter()
 	return ;
 }
 
-ScalarConverter::ScalarConverter(const ScalarConverter &bscalar)
+ScalarConverter::ScalarConverter(const ScalarConverter &scalar)
 {
+	*this = scalar;
 	return ;
 }
 
@@ -68,7 +69,13 @@ std::string isDouble(std::string input) {
 	}
 }
 
-void ScalarConverter::convert(std::string input) {
+void ScalarConverter::convert(std::string input)
+{
+	if (input.length() == 3)
+	{
+		if (input[0] == '\'' && input[2] == '\'')
+			input = std::to_string((int)input.c_str()[1]);
+	}
 	try
 	{
 		size_t pos;
@@ -86,16 +93,22 @@ void ScalarConverter::convert(std::string input) {
 		return (std::cout << "This is not a valid input" << std::endl, void());
 	}
 
-	std::cout << "Input: " << input << std::endl;
 	if (input.compare("nan") == 0 || input.compare("nanf") == 0
 		|| input.compare("inf") == 0 || input.compare("inff") == 0
 		|| input.compare("+inf") == 0 || input.compare("+inff") == 0
-		|| input.compare("-inf") == 0 || input.compare("-inff") == 0) {
-			std::cout << "char: impossible" << std::endl;
-			std::cout << "int: impossible" << std::endl;
-			std::cout << "float: " << input << std::endl;
-			std::cout << "double: " << input << std::endl;
-			return;
+		|| input.compare("-inf") == 0 || input.compare("-inff") == 0)
+	{
+		if (input.compare("nanf") == 0)
+			input = std::string("nan");
+		else if (input.compare("+inff") == 0 || input.compare("-inff") == 0)
+			input = input.substr(0, 4);
+		else if (input.compare("inff") == 0)
+			input = input.substr(0, 3);
+		std::cout << "char: impossible" << std::endl;
+		std::cout << "int: impossible" << std::endl;
+		std::cout << "float: " << input << "f" << std::endl;
+		std::cout << "double: " << input << std::endl;
+		return;
 	}
 
 	std::cout << "char: " << isPrintableChar(input) << std::endl;
